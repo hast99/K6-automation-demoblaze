@@ -19,7 +19,6 @@ Project ini dibuat untuk mensimulasikan pengujian performa API menggunakan k6 de
 * Load Testing
 * API Regression Testing
 * Performance Validation
-* Continuous Integration Testing
 
 Target aplikasi:
 
@@ -35,18 +34,6 @@ Target aplikasi:
 * Memvalidasi response API.
 * Melakukan pengujian CRUD secara end-to-end.
 * Mendeteksi penurunan performa aplikasi sejak dini.
-
----
-
-# 🛠 Teknologi yang Digunakan
-
-| Teknologi          | Fungsi                        |
-| ------------------ | ----------------------------- |
-| k6                 | Performance Testing Framework |
-| JavaScript         | Bahasa Pemrograman            |
-| Node.js            | Runtime Environment           |
-| GitHub Actions     | CI/CD Pipeline                |
-| Restful Booker API | Test Environment              |
 
 ---
 
@@ -164,13 +151,13 @@ tests/regression/booking-crud.js
 ## Clone Repository
 
 ```bash
-git clone https://github.com/USERNAME/k6-performance-testing-restful-booker.git
+git clone https://github.com/hast99/K6-automation-demoblaze
 ```
 
 Masuk ke folder project:
 
 ```bash
-cd k6-performance-testing-restful-booker
+cd k6-automation-demoblaze
 ```
 
 ---
@@ -181,19 +168,6 @@ cd k6-performance-testing-restful-booker
 
 ```bash
 choco install k6
-```
-
-### MacOS
-
-```bash
-brew install k6
-```
-
-### Linux
-
-```bash
-sudo apt-get update
-sudo apt-get install k6
 ```
 
 Verifikasi instalasi:
@@ -258,33 +232,6 @@ thresholds: {
 
 ---
 
-# 📈 HTML Report
-
-Project mendukung pembuatan laporan HTML menggunakan k6 Reporter.
-
-### Reporter
-
-```javascript
-import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
-```
-
-### Menjalankan Test
-
-```bash
-k6 run tests/regression/booking-crud.js
-```
-
-### Hasil
-
-```text
-reports/
-└── summary.html
-```
-
-Buka file HTML tersebut menggunakan browser untuk melihat hasil pengujian secara visual.
-
----
-
 # 🔄 CI/CD Pipeline
 
 Project ini menggunakan GitHub Actions untuk menjalankan pengujian secara otomatis.
@@ -295,69 +242,8 @@ Project ini menggunakan GitHub Actions untuk menjalankan pengujian secara otomat
 * Push ke branch master
 * Pull Request
 
-### Workflow
-
-```yaml
-name: Performance & Regression Testing CI
-```
-
-### Lokasi File
-
-```text
-.github/workflows/k6-regression.yml
-```
-
-### Tahapan Pipeline
-
-1. Checkout Source Code
-2. Menjalankan Smoke Test
-3. Menjalankan Load Test
-4. Menjalankan Regression Test
-5. Menampilkan Hasil Pengujian
-
----
-
-# 📊 Contoh Hasil Pengujian
-
-```text
-checks.......................: 100.00%
-http_req_duration............: avg=245ms
-http_req_failed..............: 0.00%
-iterations...................: 100
-vus..........................: 10
-```
-
-### Interpretasi
-
-* Success Rate : 100%
-* Error Rate : 0%
-* Average Response Time : 245 ms
-
----
-
-# ✅ Fitur Framework
-
-* Smoke Testing
-* Load Testing
-* Regression Testing
-* API Performance Testing
-* CRUD End-to-End Validation
-* GitHub Actions CI/CD
-* Performance Threshold Validation
-* HTML Reporting
-* Modular Project Structure
-
----
-
 # 👨‍💻 Author
 
 **Hafidh Syahputra**
 
-Quality Assurance Engineer
-
-### Keahlian
-
-* Manual Testing
-* API Testing
-* Automation Testing
-* Performance Testing
+QA Engineer
