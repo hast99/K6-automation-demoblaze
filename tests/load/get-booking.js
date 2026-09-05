@@ -1,16 +1,12 @@
-import http from "k6/http"; // Modul utama untuk mengirim request HTTP (seperti GET, POST, dll.)
-import { check } from "k6"; // Fitur untuk memvalidasi respons dari server (Assertion)
+import http from "k6/http"; 
+import { check } from "k6"; 
 
 // Fungsi ini otomatis membuat file laporan rapi setelah pengujian selesai.
 export { handleSummary } from "../../reporter.js";
 
-// =========================================================================================
-// 1. OPTIONS: Konfigurasi beban pengujian & Batas Batas Kelulusan Performa (SLA)
-// =========================================================================================
 export const options = {
-    vus: 20,         // menyimulasikan 20 Virtual Users (pengguna palsu) secara bersamaan.
-    duration: "30s", // 20 user di atas akan mengakses link API terus-menerus selama 30 detik.
-
+    vus: 20,         
+    duration: "30s", 
     // THRESHOLDS: Gerbang penentu kelulusan performa (SLA - Service Level Agreement)
     // Digunakan untuk mendeteksi 'Performance Regression' jika ada perlambatan sistem.
     thresholds: {
@@ -20,21 +16,13 @@ export const options = {
     },
 };
 
-// =========================================================================================
-// 2. DEFAULT FUNCTION: Alur pengujian utama (Dijalankan berulang kali oleh 20 user di atas)
-// =========================================================================================
 export default function () {
     
-    // HTTP GET: Di sini k6 mengirimkan request GET untuk mengambil/membaca daftar ID booking dari server.
-    // Berbeda dengan POST, metode GET tidak membutuhkan kiriman data (payload) atau params khusus.
-    // Semua data respons balikan dari server akan disimpan di dalam variabel 'res'.
     const res = http.get(
         "https://restful-booker.herokuapp.com/booking"
     );
 
-    // CHECK: Melakukan validasi fungsional terhadap respons yang ada di variabel 'res' tadi.
     check(res, {
-        // Memastikan server mengembalikan HTTP Status Code 200 (artinya request berhasil diproses)
         "Get Booking Success": (r) => r.status === 200,
     });
 }
